@@ -6,6 +6,10 @@ The goal of this project is to take this list of URLs, and using one program, ge
 
 Users who sign up gain the ability to upvote/downvote each item. Items that get downvoted before zero (negative numbers) are removed from the list and replaced.
 
+*Note*
+
+API test files are located in lib/preprod
+
 <~ Basic Functionality ~> 
 
 Users should be able to navigate to the site and see the ten best results for that profession from Yelp automatically.
