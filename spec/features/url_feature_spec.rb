@@ -23,7 +23,7 @@ describe 'Url' do
 				click_button :submit
 			end
 
-			it "should be able to " do
+			it "should be able to somethin" do
 				# current_path.should == '/'
 				# page.should have_content(@url)
 				fill_in 'url', :with => @url
