@@ -1,8 +1,10 @@
 YelpRanker::Application.routes.draw do
   
-  root to: 'urls#index'
+  root to: "urls#index"
 
-  get '/urls/:url_string' => 'urls#parse_url'
+  # resources :urls
+
+  post '/urls/parse_url/' => 'urls#parse_url'
 
 end
 

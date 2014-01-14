@@ -1,6 +1,13 @@
-<form action="<%= urls_path %>" method="get">
-	<input type="text" name="url"/>
+<h3>Enter a Url</h3>
+<form action='/urls/parse_url' method="post">
+	<input name="url" />
 	<button>submit</button>
+
 </form>
 
-<h1> <%= @url %> </h1>
+<ul>
+	<% @urls.each do |url| %> 
+	<li><%= url.url %></li>
+	<% end %>
+</ul>
+

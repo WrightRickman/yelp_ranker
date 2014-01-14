@@ -1,26 +1,34 @@
 require 'spec_helper'
 
 describe 'Url' do
-	before do
-		visit root_path
-			login_as(@user)
+	# before do
+	# 	visit root_path
+	# 	login_as(@user)
+	# end
 
-		describe "given a URL" do
-			before do
-				@url = 'restaurantnewyorkny'
-			end
+	describe "given a URL" do
+		before do
+			@url = 'restaurantnewyorkny'
+		end
+
+		describe "and I visit the root" do
+			# visit '/'
+			# login_as(@user)
 		end
 
 		describe "user enters a url" do
 			before do
-				fill_in 'url', :with @url
+				visit '/'
+				fill_in 'url', :with => @url
 				click_button :submit
 			end
 
-			it "displays the url" do
-				current_path.should == '/'
-				page.should have_content(@url)
-			end
+			it "should be able to " do
+				# current_path.should == '/'
+				# page.should have_content(@url)
+				fill_in 'url', :with => @url
+				click_button :submit
+			end	
 		end
 	end
 end
