@@ -16,6 +16,6 @@
 
 lib/preprod/docs/app.rb
 
-lib/preprod/docs/auth_keys.rtf
+doc/auth_keys.rtf
 
 lib/preprod/docs/sites.numbers
