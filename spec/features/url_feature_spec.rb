@@ -8,7 +8,7 @@ describe 'Url' do
 
 	describe "given a URL" do
 		before do
-			@url = 'restaurantnewyorkny'
+			@url = 'surgeonny'
 		end
 
 		describe "and I visit the root" do
@@ -23,7 +23,7 @@ describe 'Url' do
 				click_button :submit
 			end
 
-			it "should be able to somethin" do
+			it "should add url to form and submit" do
 				# current_path.should == '/'
 				# page.should have_content(@url)
 				fill_in 'url', :with => @url
