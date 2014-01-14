@@ -1,5 +1,6 @@
-<form action="<%= urls_path %>" method="post">
-	
-	<input name="url"/>
+<form action="<%= urls_path %>" method="get">
+	<input type="text" name="url"/>
 	<button>submit</button>
 </form>
+
+<h1> <%= @url %> </h1>
