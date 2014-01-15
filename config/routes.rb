@@ -6,5 +6,7 @@ YelpRanker::Application.routes.draw do
 
   post '/urls/parse_url/' => 'urls#parse_url'
 
+  devise_for :users
+
 end
 
