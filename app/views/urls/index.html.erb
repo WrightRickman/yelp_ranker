@@ -11,8 +11,10 @@
 	<% end %>
 </ul>
 
-<ul>
+<div class="resultbody">
 	<% @results.each do |result| %> 
-	<li><%= result.result %></li>
+	<div class="singleresult">
+		<p><%= result.result %></p>
+	</div>
 	<% end %>
-</ul>
+</div>
