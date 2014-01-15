@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115015537) do
+ActiveRecord::Schema.define(:version => 20140115025314) do
 
   create_table "rankings", :force => true do |t|
     t.integer  "rank"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20140115015537) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "results", :force => true do |t|
+  create_table "search_results", :force => true do |t|
     t.text     "result"
     t.string   "name"
     t.datetime "created_at", :null => false

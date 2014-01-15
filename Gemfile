@@ -13,6 +13,7 @@ gem 'pry'
 gem 'pry-rails'
 gem 'faker'
 gem 'devise'
+gem 'oauth'
 
 
 # Gems used only for assets and not required

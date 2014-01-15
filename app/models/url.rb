@@ -9,7 +9,7 @@ class Url < ActiveRecord::Base
 		return [@term, @location]
 	end
 
-	def call_api(term, location)
+	def self.call_api(term, location)
 
 		api_host = 'api.yelp.com'
 
