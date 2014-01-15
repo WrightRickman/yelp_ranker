@@ -5,7 +5,11 @@ class UrlsController < ApplicationController
 	end
 
 	def parse_url
-		@url_input = Url.parse_url(params[:url])
+		@term, @location = Url.parse_url(params[:url])
+
+		@businesses = Url.call_api(@term, @location)
+
+
 
 		redirect_to '/'
 	end

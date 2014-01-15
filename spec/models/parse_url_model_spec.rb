@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe ".parse_url" do 
 	before do
-		@url = Url.parse_url("surgeonsny")
+		@term, @location = Url.parse_url("surgeonny")
 	end
 
 	it "parses the argument into location and term" do
-		pending
+		expect(@location).should == "ny"
+		expect(@term).should == "surgeon"
 	end
 
 	it "puts location and term into the url" do
