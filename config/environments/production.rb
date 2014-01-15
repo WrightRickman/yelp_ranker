@@ -63,7 +63,7 @@ YelpRanker::Application.configure do
 
   config.assets.initialize_on_precompile=false
 
-  config.action_mailer.default_url_options = { :host => ‘heroku_url’ }
+  config.action_mailer.default_url_options = { :host => 'heroku_url' }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
