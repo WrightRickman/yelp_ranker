@@ -2,6 +2,26 @@ class Url < ActiveRecord::Base
 	attr_accessible :url
 
 	def self.parse_url(url)
+		#barsnewyorkny && neyorknybars
+		if url.include?("newyorkny")
+			@term = url.gsub("newyorkny", "")
+			@location = url.scan(/newyorkny/).join.gsub("newyorkny", "new%20york%20ny")
+		end
+
+		#barsnewyork, not barsnewyorkny
+		if url.include?("newyork")
+			unless url.include?("newyorkny")
+				@term = url.gsub("newyork", "")
+				@location = url.scan(/newyork/).join.gsub("newyork", "new%20york")
+			end
+		end
+
+		#barsnyc
+		if url.include?("nyc")
+			@term = url.gsub("nyc", "")
+			@location = url.scan(/nyc/).join
+		end	
+
 		#barsny
 		if url.include?("ny")
 			unless url.include?("nyc") || url.include?("newyork")
@@ -10,32 +30,12 @@ class Url < ActiveRecord::Base
 			end
 		end
 
-		# binding.pry
-
-		#barsnyc
-		if url.include?("nyc")
-			@term = url.gsub("nyc", "")
-			@location = url.scan(/nyc/).join
-		end	
-			#barsnewyork, not barsnewyorkny
-		if url.include?("newyork")
-			unless url.include?("newyorkny")
-				@term = url.gsub("newyork", "")
-				@location = url.scan(/newyork/).join.gsub("newyork", "new%20york")
-			end
+		if url.include?("losangelesca") 
+			@term = url.gsub("losangelesca", "")
+			@location = url.scan(/losangelesca/).join.gsub("losangelesca", "los%20angeles%20ca")
 		end
 
-		# binding.pry
-
-			#barsnewyorkny && neyorknybars
-		if url.include?("newyorkny")
-			@term = url.gsub("newyorkny", "")
-			@location = url.scan(/newyorkny/).join.gsub("newyorkny", "new%20york%20ny")
-		end
-
-		# binding.pry
-
-			#barsla
+		#barsla
 		if url.include?("la")
 			unless url.include?("philadelphia")
 				@term = url.gsub("la", "")
@@ -43,36 +43,22 @@ class Url < ActiveRecord::Base
 			end
 		end
 
-		# binding.pry
-
-		if url.include?("losangelesca") 
-			@term = url.gsub("losangelesca", "")
-			@location = url.scan(/losangelesca/).join.gsub("losangelesca", "los%20angeles%20ca")
+		#barsphiladelphiapa
+		if url.include?("philadelphiapa") # empty
+			@term = url.gsub("philadelphiapa", "")
+			@location = url.scan(/philadelphiapa/).join.gsub("philadelphiapa", "philadelphia%20pa")
 		end
 
-		# binding.pry
-
-			#barsphiladelphia, not barsphiladelphiapa
+		#barsphiladelphia, not barsphiladelphiapa
 		if url.include?("philadelphia")
 			unless url.include?("philadelphiapa")
 				@term = url.gsub("philadelphia", "")
 				@location = url.scan(/philadelphia/).join
 			end
 		end
-
-		# binding.pry
-
-			#barsphiladelphiapa
-		if url.include?("philadelphiapa") # empty
-			@term = url.gsub("philadelphiapa", "")
-			@location = url.scan(/philadelphiapa/).join.gsub("philadelphiapa", "philadelphia%20pa")
-		end
-
-		# binding.pry
-
+		puts "DEBUG"
+		puts [@term, @location]
 		return [@term, @location]
-
-		# binding.pry
 	end
 
 	def self.call_api(term, location)

@@ -1,0 +1,22 @@
+html { 
+  background: url(cuadros.png); 
+  height: 100%;
+}
+
+body {
+	background-color: rgba(0,0,0,0);
+}
+
+.singleresult {
+	background-color: rgb(243,245,235);
+	box-shadow: 5px 5px 0px rgb(72,187,204);
+	border: 2px solid rgb(72,187,204);
+	border-radius: 10px;
+	padding: 5px;
+	margin: 10px;
+}
+
+.singleresult p {
+	display: inline-block;
+}
+
