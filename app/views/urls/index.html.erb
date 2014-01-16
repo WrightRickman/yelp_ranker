@@ -12,9 +12,14 @@
 </ul>
 
 <div class="resultbody">
-	<% @results.each do |result| %> 
+	<% @search_results.each do |search_result| %> 
 	<div class="singleresult">
-		<p><%= result.result %></p>
+		<a href="<%= search_result.url%>"><%= search_result.name %></a>
+		<p><%= search_result.rating %></p>
+		<img src="<%= search_result.rating_img_url %>" />
+		<p><%= search_result.display_phone %></p>
+		<p><%= search_result.term %></p>
+		<p><%= search_result.location %></p>
 	</div>
 	<% end %>
 </div>

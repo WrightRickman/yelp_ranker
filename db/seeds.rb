@@ -1,4 +1,5 @@
 Url.destroy_all
+SearchResult.destroy_all
 
 url1 = Url.create!(url: "veterinariansny")
 url2 = Url.create!(url: "surgeonny")
