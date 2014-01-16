@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Url - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/url.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-call_api">::call_api</a>
+    
+    <li><a href="#method-c-parse_url">::parse_url</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Ranking.html">Ranking</a>
+  
+    <li><a href="./SearchResult.html">SearchResult</a>
+  
+    <li><a href="./Url.html">Url</a>
+  
+    <li><a href="./UrlsController.html">UrlsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Url</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-call_api" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">call_api</span><span
+            class="method-args">(term, location)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="call_api-source">
+            <pre><span class="ruby-comment"># File app/models/url.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">call_api</span>(<span class="ruby-identifier">term</span>, <span class="ruby-identifier">location</span>)
+
+        <span class="ruby-comment">#Sets host</span>
+        <span class="ruby-identifier">api_host</span> = <span class="ruby-string">&#39;api.yelp.com&#39;</span>
+
+        <span class="ruby-comment">#Keys are set in an Env. Vriable</span>
+        <span class="ruby-identifier">consumer_key</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;YELP_CONSUMER_KEY&#39;</span>]
+        <span class="ruby-identifier">consumer_secret</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;YELP_CONSUMER_SECRET&#39;</span>]
+        <span class="ruby-identifier">token</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;YELP_TOKEN&#39;</span>]
+        <span class="ruby-identifier">token_secret</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;YELP_TOKEN_SECRET&#39;</span>]
+
+        <span class="ruby-comment">#access OAuth</span>
+        <span class="ruby-identifier">consumer</span> = <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">Consumer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">consumer_key</span>, <span class="ruby-identifier">consumer_secret</span>, {<span class="ruby-value">:site</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;http://#{api_host}&quot;</span>})
+        <span class="ruby-identifier">access_token</span> = <span class="ruby-constant">OAuth</span><span class="ruby-operator">::</span><span class="ruby-constant">AccessToken</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">consumer</span>, <span class="ruby-identifier">token</span>, <span class="ruby-identifier">token_secret</span>)
+
+        <span class="ruby-comment">#Sample url takes top 10 @term in @location</span>
+        <span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;/v2/search?term=#{@term}&amp;location=#{@location}&amp;limit=10&quot;</span>
+
+        <span class="ruby-comment">#get Json from api</span>
+        <span class="ruby-ivar">@result</span> = <span class="ruby-identifier">access_token</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">body</span>
+
+        <span class="ruby-comment">#Cleans Json</span>
+        <span class="ruby-ivar">@results_clean</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-ivar">@result</span>)
+
+        <span class="ruby-comment">#Removes unwanted geolocation data</span>
+        <span class="ruby-ivar">@businesses</span> = <span class="ruby-ivar">@results_clean</span>[<span class="ruby-string">&quot;businesses&quot;</span>]
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@businesses</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- call_api-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- call_api-method -->
+
+    
+      <div id="method-c-parse_url" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse_url</span><span
+            class="method-args">(url)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="parse_url-source">
+            <pre><span class="ruby-comment"># File app/models/url.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_url</span>(<span class="ruby-identifier">url</span>)
+        <span class="ruby-comment"># case url</span>
+        <span class="ruby-comment"># # barsny, not barsnyc, barsnewyork, or barsnewyorkny</span>
+        <span class="ruby-comment"># when url.include?(&quot;ny&quot;) == true</span>
+        <span class="ruby-comment">#     unless url.include?(&quot;nyc&quot;) || url.include?(&quot;newyork&quot;) do</span>
+                        <span class="ruby-ivar">@term</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;ny&quot;</span>, <span class="ruby-string">&quot;&quot;</span>)
+                        <span class="ruby-ivar">@location</span> = <span class="ruby-identifier">url</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/ny/</span>).<span class="ruby-identifier">join</span>
+        <span class="ruby-comment">#     end</span>
+        <span class="ruby-comment"># #barsnyc</span>
+        <span class="ruby-comment"># when url.include?(&quot;nyc&quot;) == true</span>
+        <span class="ruby-comment">#     @term = url.gsub(&quot;nyc&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#     @location = url.scan(/nyc/).join</span>
+        <span class="ruby-comment"># #barsnewyork, not barsnewyorkny</span>
+        <span class="ruby-comment"># when url.include?(&quot;newyork&quot;) == true</span>
+        <span class="ruby-comment">#     unless url.include?(&quot;newyorkny&quot;) do</span>
+        <span class="ruby-comment">#             @term = url.gsub(&quot;ny&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#             @location = url.scan(/ny/).join</span>
+        <span class="ruby-comment">#     end</span>
+        <span class="ruby-comment"># #barsnewyorkny &amp;&amp; neyorknybars</span>
+        <span class="ruby-comment"># when url.include?(&quot;newyorkny=&quot;) == true</span>
+        <span class="ruby-comment">#     @term = url.gsub(&quot;newyorkny&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#     @location = url.scan(/newyorkny/).join</span>
+        <span class="ruby-comment"># #barsla</span>
+        <span class="ruby-comment"># when url.include?(&quot;la&quot;) == true</span>
+        <span class="ruby-comment">#     @term = url.gsub(&quot;la&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#     @location = url.scan(/la/).join</span>
+        <span class="ruby-comment"># #barslocangelesca &amp;&amp; losangelescabars</span>
+        <span class="ruby-comment"># when url.include?(&quot;losangelesca&quot;) == true</span>
+        <span class="ruby-comment">#     @term = url.gsub(&quot;losangelesca&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#     @location = url.scan(/la/).join</span>
+        <span class="ruby-comment"># #barsphiladelphia, not barsphiladelphiapa</span>
+        <span class="ruby-comment"># when url.include?(&quot;philadelphia&quot;) == true</span>
+        <span class="ruby-comment">#     unless url.include?(&quot;philadelphiapa&quot;) do</span>
+        <span class="ruby-comment">#             @term = url.gsub(&quot;philadelphia&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#             @location = url.scan(/philadelphia/).join</span>
+        <span class="ruby-comment">#     end</span>
+        <span class="ruby-comment"># #barsphiladelphiapa</span>
+        <span class="ruby-comment"># when url.include?(&quot;philadelphiapa&quot;) == true</span>
+        <span class="ruby-comment">#     @term = url.gsub(&quot;philadelphiapa&quot;, &quot;&quot;)</span>
+        <span class="ruby-comment">#     @location = url.scan(/philadelphiapa/).join</span>
+        <span class="ruby-comment"># # else</span>
+        <span class="ruby-comment"># #   puts &quot;error&quot;</span>
+        <span class="ruby-comment"># end</span>
+
+
+        <span class="ruby-keyword">return</span> [<span class="ruby-ivar">@term</span>, <span class="ruby-ivar">@location</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse_url-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse_url-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
