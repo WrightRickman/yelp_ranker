@@ -19,6 +19,8 @@ class UrlsController < ApplicationController
 				break if @search_results.length > 9
 			end
 		end
+
+		# binding.pry
 	end
 
 	def supported
@@ -56,11 +58,15 @@ class UrlsController < ApplicationController
 		term = params[:term]
 		location = params[:location]
 
+		session[:term] = term
+		session[:location] = location
+
+		term_clean = term.gsub(" ", "%20")
 		location_clean = location.gsub(" ", "%20")
 
-		businesses = Url.call_api(term, location_clean)
+		businesses = Url.call_api(term_clean, location_clean)
 
-
+		# binding.pry
 		#adds a result to the database if it does not yet exist
 		businesses.each do |business|
 			data_hash = {rating: business["rating"], 
@@ -69,8 +75,8 @@ class UrlsController < ApplicationController
 			url: business["url"], 
 			display_phone: business["display_phone"], 
 			snippet_img_url: business["snippet_image_url"],
-			term: @term, 
-			location: @location}
+			term: term_clean, 
+			location: location_clean}
 			SearchResult.where(:term => @term, :location => @location).create(data_hash)
 		end
 
