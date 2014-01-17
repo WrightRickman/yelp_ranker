@@ -44,7 +44,7 @@ class Url < ActiveRecord::Base
 		end
 
 		#barsphiladelphiapa
-		if url.include?("philadelphiapa") # empty
+		if url.include?("philadelphiapa")
 			@term = url.gsub("philadelphiapa", "")
 			@location = url.scan(/philadelphiapa/).join.gsub("philadelphiapa", "philadelphia%20pa")
 		end
@@ -77,7 +77,7 @@ class Url < ActiveRecord::Base
 		access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
 		#Sample url takes top 10 @term in @location
-		path = "/v2/search?term=#{@term}&location=#{@location}&limit=10"
+		path = "/v2/search?term=#{term}&location=#{location}&limit=20"
 
 		#get Json from api
 		@result = access_token.get(path).body

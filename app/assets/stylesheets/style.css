@@ -23,6 +23,7 @@ body {
 .header h3 {
 	text-align: center;
 	margin-top: 5px;
+	margin-bottom: 20px;
 	font-family: 'Fredoka One', cursive;
 	font-size: 2.5em;
 	color: rgb(106,200,206);
@@ -32,6 +33,7 @@ body {
 .header input {
 	outline: none;
 	width: 200px;
+	margin-left: 15px;
 }
 
 #headercontent {
@@ -42,6 +44,8 @@ body {
 	margin: -10px 3px 10px 3px;
 	text-align: center;
 	padding: 5px;
+	clear: both;
+	margin-top: 3px;
 }
 
 .userbuttons a:link, .userbuttons a:visited, .userbuttons a:hover, .userbuttons a:active{
@@ -55,9 +59,9 @@ body {
 	box-shadow: 0px 4px 3px rgba(44,52,68,0.6);
 	border-radius: 100px;
 	padding: 5px;
-	margin: 10px;
+	margin: 20px 0;
 	text-align: center;
-	padding-bottom: inherit;
+	height: 120px;
 }
 
 .singleresult a {
@@ -88,11 +92,13 @@ body {
 	border-radius: 100%;
 	float: right;
 	margin-right: 15px;
-	margin-top: -94px;
+	margin-top: -118px;
 }
 
 .rankbuttons {
-	margin-left: 35px;
+	margin-left: -544px;
+	margin-top: -82px;
+
 }
 
 .upvote {
@@ -105,6 +111,51 @@ body {
 	margin-left: 155px;
 }
 
+#regsearch {
+	text-align: center;
+	margin-top: 10px;
+}
 
+#regsearch form {
+	margin: -14px;
+}
 
+#regsearch form input {
+	display: inline;
+}
 
+#urlsearch {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#urlsearch a:link, #urlsearch a:visited, #urlsearch a:hover, #urlsearch a:active {
+	margin-top: -10px;
+	color: black;
+	text-decoration: none;
+	padding-bottom: 5px;
+}
+
+#urlsearch form {
+	margin: -14px;
+}
+
+#urlsearch form input {
+	display: inline;
+}
+
+.submit1 {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.supported {
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 25%;
+	background-color: rgba(255,255,255,0.93);
+	box-shadow: 0px 4px 3px rgba(44,52,68,0.6);
+	border-radius: 10px;
+	padding: 10px;
+}

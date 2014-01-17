@@ -21,6 +21,10 @@ class UrlsController < ApplicationController
 		end
 	end
 
+	def supported
+		@urls = Url.all
+	end
+
 	def parse_url
 		term_location = Url.parse_url(params[:url])
 		@term = term_location[0]
@@ -29,11 +33,36 @@ class UrlsController < ApplicationController
 		session[:term] = @term
 		session[:location] = @location
 
-		#creates and array of 10 clean results 
+		#creates and array of 20 clean results 
 		@businesses = Url.call_api(@term, @location)
 
 		#adds a result to the database if it does not yet exist
 		@businesses.each do |business|
+			data_hash = {rating: business["rating"], 
+			rating_img_url: business["rating_img_url"],
+			name: business["name"], 
+			url: business["url"], 
+			display_phone: business["display_phone"], 
+			snippet_img_url: business["snippet_image_url"],
+			term: @term, 
+			location: @location}
+			SearchResult.where(:term => @term, :location => @location).create(data_hash)
+		end
+
+		redirect_to '/'
+	end
+
+	def call_api
+		term = params[:term]
+		location = params[:location]
+
+		location_clean = location.gsub(" ", "%20")
+
+		businesses = Url.call_api(term, location_clean)
+
+
+		#adds a result to the database if it does not yet exist
+		businesses.each do |business|
 			data_hash = {rating: business["rating"], 
 			rating_img_url: business["rating_img_url"],
 			name: business["name"], 

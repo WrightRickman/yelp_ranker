@@ -1,44 +1,59 @@
 <div id="content">
 	<div class="header fourteen columns offset-by-two">
 		<div id="headercontent">
-			<h3>Enter a Url</h3>
-			<form action='/urls/parse_url' method="post">
-				<input name="authenticity_token" 
-			                  type="hidden" 
-			                  value="<%= form_authenticity_token %>" />
-				<input name="url" placeholder="Search"/>
-
-			</form>
-			<div class="userbuttons">
-				<a href="/users/sign_in">Sign In</a>
-				<a href="/users/sign_up">Sign Up</a>
+			<div id="regsearch">
+				<h3>Thing n' Place</h3>
+				<form action='/urls/call_api' method="post">
+					<form action='/urls/parse_url' method="post">
+						<input name="authenticity_token" 
+						type="hidden" 
+						value="<%= form_authenticity_token %>" />
+						<input type="text" name="term" placeholder="Search Term">
+						<input type="text" name="location" placeholder="Location">
+						<button class="submit1">Submit</button>
+					</form>
+				</div>
+				<div id="urlsearch">
+					<h3>Enter a Url</h3>
+					<form action='/urls/parse_url' method="post">
+						<input name="authenticity_token" 
+						type="hidden" 
+						value="<%= form_authenticity_token %>" />
+						<input type="text" name="url" placeholder="Search"/>
+						<button class="submit2">Submit</button>
+					</form>
+					<a href="urls/supported">Supported Urls</a>
+				</div>
+				<div class="userbuttons">
+					<a href="/users/sign_in">Sign In</a>
+					<a href="/users/sign_up">Sign Up</a>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="resultbody twelve columns offset-by-two">
-		<% @search_results.each do |search_result| %> 
-		<div class="singleresult">
-			<a href="<%= search_result.url%>"><%= search_result.name %></a>
-			<br />
-			<img src="<%= search_result.rating_img_url %>" />
-			<br />
-			<p><%= search_result.display_phone %></p>
-			<p>Your Rank: <%= search_result.rank %></p>
-			<br />
-			<img src="<%= search_result.snippet_img_url %>" class="roundimg"/>
-			
-			<div class="rankbuttons">
-				<% if user_signed_in? %>
-				<div class="upvote">
-					<%= button_to "Upvote", url_upvote_path(search_result), method: :put %>
+		<div class="resultbody twelve columns offset-by-two">
+			<% @search_results.each do |search_result| %> 
+			<div class="singleresult">
+				<a href="<%= search_result.url%>"><%= search_result.name %></a>
+				<br />
+				<img src="<%= search_result.rating_img_url %>" />
+				<br />
+				<p><%= search_result.display_phone %></p>
+				<p>Your Rank: <%= search_result.rank %></p>
+				<br />
+				<img src="<%= search_result.snippet_img_url %>" class="roundimg"/>
+
+				<div class="rankbuttons">
+					<% if user_signed_in? %>
+					<div class="upvote">
+						<%= button_to "Upvote", url_upvote_path(search_result), method: :put %>
+					</div>
+					<div class="downvote">
+						<%= button_to "Downvote", url_downvote_path(search_result), method: :put %>
+					</div>
+					<% end %>
 				</div>
-				<div class="downvote">
-					<%= button_to "Downvote", url_downvote_path(search_result), method: :put %>
-				</div>
+			</div>
 			<% end %>
-			</div>
 		</div>
-		<% end %>
 	</div>
-</div>
