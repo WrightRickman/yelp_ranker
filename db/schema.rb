@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116004043) do
+ActiveRecord::Schema.define(:version => 20140116235819) do
 
   create_table "rankings", :force => true do |t|
     t.integer  "result_id"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(:version => 20140116004043) do
     t.text     "url"
     t.string   "name"
     t.string   "display_phone"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "term"
     t.string   "location"
-    t.integer  "rank",           :default => 0
+    t.integer  "rank",            :default => 0
+    t.text     "snippet_img_url"
   end
 
   create_table "urls", :force => true do |t|

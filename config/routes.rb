@@ -9,10 +9,6 @@ YelpRanker::Application.routes.draw do
   	put "downvote"
   end
 
-  # put '/urls/:id/upvote' => "urls#upvote"
-
-  # put '/urls/:id/downvote' => "urls#downvote"
-
   devise_for :users
 
 end
