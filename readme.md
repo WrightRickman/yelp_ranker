@@ -1,6 +1,6 @@
 <~ Readme.md ~>
 
-App can be found at [link](http://enigmatic-everglades-5042.herokuapp.com/)
+App can be found [HERE (enigmatic-everglades-5042.herokuapp.com)](http://enigmatic-everglades-5042.herokuapp.com/)
 
 In my possession I have many urls, all consiting of a place and a profession (e.g. physiciansnewyorkny.com). The professions run the gamut of medical, legal, and hospitality fields and the places include many of the largest cities in the US.
 
