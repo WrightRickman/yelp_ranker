@@ -1,4 +1,4 @@
-<~ Readme.md ~>
+# Readme.md
 
 App can be found [HERE (enigmatic-everglades-5042.herokuapp.com)](http://enigmatic-everglades-5042.herokuapp.com/)
 
@@ -6,19 +6,21 @@ In my possession I have many urls, all consiting of a place and a profession (e.
 
 The goal of this project is to take this list of URLs, and using one program, generate a list of the highest rated business on Yelp of the type and location in the URL (e.g. pysiciansnewyorkny will display the best doctors in New York).
 
-Users who sign up gain the ability to upvote/downvote each item. Items that get downvoted before zero (negative numbers) are removed from the list and replaced.
+Users who sign up gain the ability to upvote/downvote each item. Items that get downvoted before zero (negative numbers) are removed from the list and replaced by a new result.
 
-<~ Basic Functionality ~> 
+## Basic Functionality 
 
-Users should be able to navigate to the site and see the ten best results for that profession from Yelp automatically.
+A user types in a supported url. The url is parsed and passed into the Yelp api. 
+
+There is also a normal Yelp search for you to rank.
 
 Users should be able to log in and upvote or downvote businesses.
 
-Upvoted business should appear higher on the list.
+Upvoted business appear higher on the list.
 
-Downvoted businesses should appear lower. If they drop into the negatives they should be removed from the list and replaced.
+Downvoted businesses appear lower. If they drop into the negatives they are be removed from the list and replaced. If you search again, these results will not return, allowing for greater discovery.
 
-<~ Data Model ~>
+## Data Model
 
 This app uses three models:
 
@@ -26,17 +28,19 @@ results: stores the hash for each business from the Yelp API, and the name pulle
 
 users: stores usernames and passwords for each user.
 
-rankings: acts as a join table tying results to users. Also stores the rank for a particular result. Rank is an integer that is in/decremented when the result is up/downvoted, a funtion only available to users. 
+There is also a table of the seed urls that acts as a lib.
 
-<~ APIs and Gems Used ~>
+## APIs and Gems Used
 
 This app uses the Yelp API.
 
 To use the Yelp API it requires the OAuth gem for authentification. 
 
-In addition this app will be developed through testing, so rspec and capybara are necessary. 
+In addition this app used rspec, capybara, and devise.
 
-<~ Future Iterations ~>
+## Future Iterations
+
+Navigating to a supported url will automatically show the results for that profession
 
 Allow the user to mark businesses as favorites
 

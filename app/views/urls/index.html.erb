@@ -22,11 +22,17 @@
 						<input type="text" name="url" placeholder="Search"/>
 						<button class="submit2">Submit</button>
 					</form>
-					<a href="urls/supported">Supported Urls</a>
+					<a href="urls/supported">Click For Our Supported Urls</a>
 				</div>
 				<div class="userbuttons">
-					<a href="/users/sign_in">Sign In</a>
-					<a href="/users/sign_up">Sign Up</a>
+					<% if user_signed_in? %>
+						<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+						<% else %>
+							<a href="/users/sign_in">Sign In</a>
+							<a href="/users/sign_up">Sign Up</a>
+						<% end %>
+
+					
 				</div>
 			</div>
 		</div>

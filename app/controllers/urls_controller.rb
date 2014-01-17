@@ -9,18 +9,17 @@ class UrlsController < ApplicationController
 
 		results = SearchResult.order("rank desc")
 
-		#Only display the results of the active search
-		#Only runs check if the table has items in it
+		#Does not run the check if db is empty
 		if SearchResult.count > 0
 			results.each do |result|
+				#Only displays the results of the active search, clears previous searches
 				if result.location == @location && result.term == @term
 					@search_results << result
 				end
+				#Stops the loop after 10 results
 				break if @search_results.length > 9
 			end
 		end
-
-		# binding.pry
 	end
 
 	def supported
@@ -58,15 +57,15 @@ class UrlsController < ApplicationController
 		term = params[:term]
 		location = params[:location]
 
-		session[:term] = term
-		session[:location] = location
 
 		term_clean = term.gsub(" ", "%20")
 		location_clean = location.gsub(" ", "%20")
 
+		session[:term] = term_clean
+		session[:location] = location_clean
+
 		businesses = Url.call_api(term_clean, location_clean)
 
-		# binding.pry
 		#adds a result to the database if it does not yet exist
 		businesses.each do |business|
 			data_hash = {rating: business["rating"], 
